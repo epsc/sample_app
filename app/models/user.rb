@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
 	
 	validates :password, length: { minimum: 6 }
 	has_secure_password
+	after_validation { self.errors.messages.delete(:password_digest) }
 end
